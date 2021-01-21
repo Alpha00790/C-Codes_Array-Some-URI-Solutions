@@ -1,0 +1,34 @@
+#include<bits/stdc++.h>
+using namespace std;
+struct Array{
+    int A[10];
+    int size_Array;
+    int length;
+};
+void Display(struct Array arr)
+{
+    cout<<"Elements Are:\n";
+    for(int i = 0; i < arr.length; i++)
+        cout<<arr.A[i]<<" ";
+}
+int Delete(struct Array *arr, int index){
+    int x = 0;
+    if(index >= 0 && index <= arr->length){
+        x = arr->A[index];
+        for(int i = index; i < arr->length-1; i++)
+            arr->A[i] = arr->A[i+1];
+        arr->length--;
+        return x;
+    }
+    return 0;
+}
+int main()
+{
+    struct Array arr1 = {{2,3,4,5,6},10,5};
+    Display(arr1);
+    cout<<endl;
+    cout<<"Deleted Element: "<<Delete(&arr1,1);
+    cout<<endl;
+    Display(arr1);
+    return 0;
+}
